@@ -5,13 +5,16 @@ function Froyo (flavor, amount) {
 
 let froyoString = prompt("Enter a list of comma-separated froyo flavors", "");
 
-let rawArr = froyoString.split(",");
-let arr = [];
-rawArr.forEach(
-    (str, index)=>{
-       arr.push(str.trim());
-    }
-);
+let stringToArray = (str) => {
+    let rawArr = str.split(",");
+    let arr = [];
+    rawArr.forEach(
+        (str, index)=>{
+            arr.push(str.trim());
+        }
+    );
+    return arr;
+}
 
 let addToCart = (froyoStringArray) => {
     if (froyoStringArray[0] == "") return "Cart Empty!";
@@ -38,5 +41,6 @@ let addToCart = (froyoStringArray) => {
     return cart;
 }
 
-
-console.log(addToCart(arr));
+console.log("You ordered: " + froyoString);
+let order = stringToArray(froyoString);
+console.log(addToCart(order));
